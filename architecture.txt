@@ -1,0 +1,9 @@
+[Presentation Layer]======>[Business Layer]=====>[Persistence Layer]
+		||						||						||
+		\/						\/						\/
+Request-->Controller<--------------------->Process<------------->Data(Manipulation)	
+	/|\			|
+	-|<-------Response;		
+		
+
+		
