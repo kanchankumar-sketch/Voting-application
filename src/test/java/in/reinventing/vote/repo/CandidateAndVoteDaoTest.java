@@ -26,7 +26,7 @@ class CandidateAndVoteDaoTest {
 	@Test
 	@DisplayName("Testing entered candidate peresent or not.")
 	void isCandidatePresent() {
-		String name = "kanchan1";
+		String name = "kanchan12";
 		this.candidateAndVoteDao.enterCondidate(name);
 		assertTrue(this.candidateAndVoteDao.isCondidatePresent(name));
 	}
@@ -34,7 +34,7 @@ class CandidateAndVoteDaoTest {
 	@Test
 	@DisplayName("Voting test.")
 	void voteCandidate() {
-		String name = "kanchan2";
+		String name = "kanchan13";
 		this.candidateAndVoteDao.enterCondidate(name);
 		assertTrue(this.candidateAndVoteDao.voteCandidate(name));
 	}
@@ -42,7 +42,7 @@ class CandidateAndVoteDaoTest {
 	@Test
 	@DisplayName("voting count test.")
 	void countVote() {
-		String name = "kanchan3";
+		String name = "kanchan11";
 		this.candidateAndVoteDao.enterCondidate(name);
 		this.candidateAndVoteDao.voteCandidate(name);
 		assertEquals(1, this.candidateAndVoteDao.countVote(name));
