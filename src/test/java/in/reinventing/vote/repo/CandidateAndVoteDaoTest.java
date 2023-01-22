@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import in.reinventing.vote.dao.CandidateAndVoteDao;
 
 @SpringBootTest
-public class CandidateAndVoteDaoTest {
+class CandidateAndVoteDaoTest {
 
 	@Autowired
 	private CandidateAndVoteDao candidateAndVoteDao;

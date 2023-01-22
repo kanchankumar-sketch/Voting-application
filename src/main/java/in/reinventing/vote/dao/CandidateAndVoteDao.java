@@ -9,14 +9,11 @@ import org.springframework.stereotype.Repository;
 public class CandidateAndVoteDao implements CanditateDao, VoteDao {
 
 	private static final ConcurrentHashMap<String, Integer> candidateVoting = new ConcurrentHashMap<>();
-	public static final Integer initialVoteCount = 0;
+	public static final Integer INITIAL_VOTE_COUNT = 0;
 
 	@Override
 	public boolean isCondidatePresent(String name) {
-		if (candidateVoting.get(name) != null) {
-			return true;
-		}
-		return false;
+		return candidateVoting.get(name) != null?true:false;
 	}
 
 	@Override
@@ -46,7 +43,7 @@ public class CandidateAndVoteDao implements CanditateDao, VoteDao {
 		if (isCondidatePresent(name)) {
 			return false;
 		}
-		candidateVoting.put(name, initialVoteCount);
+		candidateVoting.put(name, INITIAL_VOTE_COUNT);
 		return true;
 	}
 

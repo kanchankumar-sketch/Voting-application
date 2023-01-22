@@ -19,48 +19,50 @@ public class VotingResource {
 	
 	@Autowired
 	private VotingService votingService;
+	
+	public static final String PARAMETER_NOT_EMPTY="Please make sure candidate name parameter is not empty.";
 
 	@GetMapping("/entercandidate")
-	public ResponseEntity<?> enterCandidate(@RequestParam(value = "name", required = false) String name) {
+	public ResponseEntity<Object> enterCandidate(@RequestParam(value = "name", required = false) String name) {
 		if (name != null && !name.trim().equalsIgnoreCase("")) {
 			Object response = candidateService.enterCandidate(name);
 			return new ResponseEntity<Object>(response,
 					response instanceof CandidateModel ? HttpStatus.ACCEPTED : HttpStatus.ALREADY_REPORTED);
 		}
-		return new ResponseEntity<Object>("Please make sure candidate name parameter is not empty.",
+		return new ResponseEntity<Object>(PARAMETER_NOT_EMPTY,
 				HttpStatus.BAD_REQUEST);
 	}
 	
 	
 	@GetMapping("/castvote")
-	public ResponseEntity<?> getCastVote(@RequestParam(value = "name", required = false) String name){
+	public ResponseEntity<Object> getCastVote(@RequestParam(value = "name", required = false) String name){
 		if (name != null && !name.trim().equalsIgnoreCase("")) {
 			Object response = votingService.castVote(name);
 			return new ResponseEntity<Object>(response,
 					response instanceof CandidateModel ? HttpStatus.ACCEPTED : HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Object>("Please make sure candidate name parameter is not empty.",
+		return new ResponseEntity<Object>(PARAMETER_NOT_EMPTY,
 				HttpStatus.BAD_REQUEST);
 	}
 	
 	@GetMapping("/countvote")
-	public ResponseEntity<?> getCountVote(@RequestParam(value = "name", required = false) String name){
+	public ResponseEntity<Object> getCountVote(@RequestParam(value = "name", required = false) String name){
 		if (name != null && !name.trim().equalsIgnoreCase("")) {
 			Object response = votingService.countVote(name);
 			return new ResponseEntity<Object>(response,
 					response instanceof CandidateModel ? HttpStatus.ACCEPTED : HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Object>("Please make sure candidate name parameter is not empty.",
+		return new ResponseEntity<Object>(PARAMETER_NOT_EMPTY,
 				HttpStatus.BAD_REQUEST);
 	}
 	
 	@GetMapping("/listvote")
-	public ResponseEntity<?> getlistVote(){
+	public ResponseEntity<Object> getlistVote(){
 		return new ResponseEntity<Object>(votingService.listVote(),HttpStatus.OK);
 	}
 	
 	@GetMapping("/getwinner")
-	public ResponseEntity<?> getWinner(){
+	public ResponseEntity<Object> getWinner(){
 		return new ResponseEntity<Object>(votingService.getWinner(),HttpStatus.OK);
 	}
 
