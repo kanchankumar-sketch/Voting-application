@@ -13,7 +13,7 @@ public class CandidateAndVoteDao implements CanditateDao, VoteDao {
 
 	@Override
 	public boolean isCondidatePresent(String name) {
-		return candidateVoting.get(name) != null?true:false;
+		return candidateVoting.get(name) != null;
 	}
 
 	@Override
